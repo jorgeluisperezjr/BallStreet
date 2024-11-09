@@ -32,10 +32,17 @@
             <p class="text-gray-300 mb-8">Get early access to data-driven sports analytics.</p>
             
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSeqluFmUtY02A9rg6qq5SVgoRuV7zMI--bvB5TS7_spzLIjcQ/formResponse" method="POST" target="hidden_iframe" class="space-y-4">
+                <!-- Adding required Google Form fields -->
+                <input type="hidden" name="fvv" value="1">
+                <input type="hidden" name="draftResponse" value="[null,null,&quot;2122661367221897979&quot;]">
+                <input type="hidden" name="pageHistory" value="0">
+                <input type="hidden" name="fbzx" value="2122661367221897979">
+                
                 <div>
                     <input 
                         type="text" 
                         name="entry.2034867047"
+                        id="entry.2034867047"
                         placeholder="First Name" 
                         class="w-full px-4 py-3 rounded bg-gray-700 text-white border border-gray-600 focus:border-seafoam focus:outline-none mb-4"
                         required
@@ -45,6 +52,7 @@
                     <input 
                         type="email" 
                         name="entry.1790010594"
+                        id="entry.1790010594"
                         placeholder="Email Address" 
                         class="w-full px-4 py-3 rounded bg-gray-700 text-white border border-gray-600 focus:border-seafoam focus:outline-none"
                         required
@@ -68,17 +76,27 @@
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <script>
-        var form = document.querySelector('form');
-        var iframe = document.getElementById('hidden_iframe');
-        
-        // When form submits
-        form.addEventListener('submit', function(e) {
-            // Don't prevent default - let the form submit naturally
-            setTimeout(function() {
-                // Show success message and reset form after submission
-                alert('Thanks for joining! We\'ll keep you updated.');
-                form.reset();
-            }, 1000);
+        // Wait for the document to load
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.querySelector('form');
+            var iframe = document.getElementById('hidden_iframe');
+            
+            // When form submits
+            form.addEventListener('submit', function(e) {
+                var firstName = document.getElementById('entry.2034867047').value;
+                var email = document.getElementById('entry.1790010594').value;
+                
+                if (!firstName || !email) {
+                    e.preventDefault();
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                setTimeout(function() {
+                    alert('Thanks for joining! We\'ll keep you updated.');
+                    form.reset();
+                }, 1000);
+            });
         });
     </script>
 </body>
