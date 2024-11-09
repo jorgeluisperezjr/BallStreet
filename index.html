@@ -18,6 +18,19 @@
         .text-seafoam {
             color: #98FFD6;
         }
+        
+        /* Style the embedded form */
+        iframe {
+            border: none;
+            width: 100%;
+            height: 400px;
+            background: transparent;
+        }
+        
+        /* Hide Google Form header and footer */
+        iframe {
+            margin-top: -80px;  /* Adjust as needed */
+        }
     </style>
 </head>
 <body class="bg-roulette min-h-screen flex items-center justify-center">
@@ -29,55 +42,15 @@
 
         <div class="bg-gray-800 p-8 rounded-lg shadow-xl">
             <h2 class="text-2xl font-semibold text-white mb-6">Join the Movement</h2>
-            <p class="text-gray-300 mb-8">Get early access to data-driven sports analytics.</p>
+            <p class="text-gray-300 mb-4">Get early access to data-driven sports analytics.</p>
             
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-            
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeqluFmUtY02A9rg6qq5SVgoRuV7zMI--bvB5TS7_spzLIjcQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="space-y-4">
-                <div>
-                    <input 
-                        type="text" 
-                        name="entry.2034867047"
-                        placeholder="First Name" 
-                        class="w-full px-4 py-3 rounded bg-gray-700 text-white border border-gray-600 focus:border-seafoam focus:outline-none mb-4"
-                        required
-                    >
-                </div>
-                <div>
-                    <input 
-                        type="email" 
-                        name="entry.1790010594"
-                        placeholder="Email Address" 
-                        class="w-full px-4 py-3 rounded bg-gray-700 text-white border border-gray-600 focus:border-seafoam focus:outline-none"
-                        required
-                    >
-                </div>
-                <button 
-                    type="submit"
-                    class="w-full bg-seafoam hover:hover-seafoam text-gray-900 font-semibold py-3 px-6 rounded transition duration-200"
-                >
-                    Join Waitlist
-                </button>
-            </form>
+            <!-- Embedded Google Form -->
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqluFmUtY02A9rg6qq5SVgoRuV7zMI--bvB5TS7_spzLIjcQ/viewform?embedded=true"></iframe>
         </div>
         
         <p class="text-gray-500 text-sm mt-8">
             Must be 18+ to participate. Please gamble responsibly.
         </p>
     </div>
-
-    <script type="text/javascript">
-        var submitted = false;
-        var form = document.querySelector('form');
-        form.addEventListener('submit', function(e) {
-            if(submitted) {
-                setTimeout(function() {
-                    alert('Thanks for joining! We\'ll keep you updated.');
-                    form.reset();
-                    submitted = false;
-                }, 1000);
-            }
-        });
-    </script>
 </body>
 </html>
