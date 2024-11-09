@@ -21,15 +21,32 @@
         
         /* Style the embedded form */
         iframe {
-            border: none;
             width: 100%;
-            height: 400px;
+            height: 360px;
+            border: none;
             background: transparent;
         }
-        
-        /* Hide Google Form header and footer */
+
+        /* Hide Google Form elements by injecting CSS into the iframe */
         iframe {
-            margin-top: -80px;  /* Adjust as needed */
+            margin-top: -155px; /* Hide header */
+            margin-bottom: -150px; /* Hide footer */
+        }
+
+        /* Create a container to clip overflow */
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 10px;
+        }
+
+        /* Custom CSS that will be injected into the iframe */
+        .custom-form-style {
+            --background-color: #1F2937;
+            --text-color: #FFFFFF;
+            --button-color: #98FFD6;
+            --button-text: #111827;
         }
     </style>
 </head>
@@ -44,13 +61,25 @@
             <h2 class="text-2xl font-semibold text-white mb-6">Join the Movement</h2>
             <p class="text-gray-300 mb-4">Get early access to data-driven sports analytics.</p>
             
-            <!-- Embedded Google Form -->
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqluFmUtY02A9rg6qq5SVgoRuV7zMI--bvB5TS7_spzLIjcQ/viewform?embedded=true"></iframe>
+            <div class="iframe-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqluFmUtY02A9rg6qq5SVgoRuV7zMI--bvB5TS7_spzLIjcQ/viewform?embedded=true" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0"
+                        scrolling="no">Loading…</iframe>
+            </div>
         </div>
         
         <p class="text-gray-500 text-sm mt-8">
             Must be 18+ to participate. Please gamble responsibly.
         </p>
     </div>
+
+    <script>
+        // Adjust iframe height after content loads
+        document.querySelector('iframe').addEventListener('load', function() {
+            this.style.height = '360px';  // Adjust this value as needed
+        });
+    </script>
 </body>
 </html>
