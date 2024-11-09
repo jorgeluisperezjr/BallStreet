@@ -19,36 +19,16 @@
             color: #98FFD6;
         }
         
-        /* Style the embedded form */
-        iframe {
+        /* Typeform embed styling */
+        .typeform-embed {
             width: 100%;
-            height: 360px;
+            height: 150px; /* Adjust as needed */
             border: none;
             background: transparent;
         }
-
-        /* Hide Google Form elements by injecting CSS into the iframe */
-        iframe {
-            margin-top: -155px; /* Hide header */
-            margin-bottom: -150px; /* Hide footer */
-        }
-
-        /* Create a container to clip overflow */
-        .iframe-container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 10px;
-        }
-
-        /* Custom CSS that will be injected into the iframe */
-        .custom-form-style {
-            --background-color: #1F2937;
-            --text-color: #FFFFFF;
-            --button-color: #98FFD6;
-            --button-text: #111827;
-        }
     </style>
+    <!-- Add Typeform embed script -->
+    <script id="typef_orm" src="https://embed.typeform.com/next/embed.js"></script>
 </head>
 <body class="bg-roulette min-h-screen flex items-center justify-center">
     <div class="max-w-xl mx-auto p-6 text-center">
@@ -59,27 +39,15 @@
 
         <div class="bg-gray-800 p-8 rounded-lg shadow-xl">
             <h2 class="text-2xl font-semibold text-white mb-6">Join the Movement</h2>
-            <p class="text-gray-300 mb-4">Get early access to data-driven sports analytics.</p>
+            <p class="text-gray-300 mb-8">Get early access to data-driven sports analytics.</p>
             
-            <div class="iframe-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqluFmUtY02A9rg6qq5SVgoRuV7zMI--bvB5TS7_spzLIjcQ/viewform?embedded=true" 
-                        frameborder="0" 
-                        marginheight="0" 
-                        marginwidth="0"
-                        scrolling="no">Loading…</iframe>
-            </div>
+            <!-- Typeform Embed -->
+            <div data-tf-widget="Iy57LLC9" data-tf-opacity="100" data-tf-inline-on-mobile data-tf-iframe-props="title=Email Collection" data-tf-transitive-search-params data-tf-auto-focus data-tf-medium="snippet" data-tf-full-screen class="typeform-embed"></div>
         </div>
         
         <p class="text-gray-500 text-sm mt-8">
             Must be 18+ to participate. Please gamble responsibly.
         </p>
     </div>
-
-    <script>
-        // Adjust iframe height after content loads
-        document.querySelector('iframe').addEventListener('load', function() {
-            this.style.height = '360px';  // Adjust this value as needed
-        });
-    </script>
 </body>
 </html>
